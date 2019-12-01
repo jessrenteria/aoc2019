@@ -1,2 +1,3 @@
-# aoc2019
-Advent of Code 2019 Solutions
+# Advent of Code 2019
+
+Haskell solutions to Advent of Code.
