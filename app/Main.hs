@@ -3,7 +3,7 @@ module Main where
 import Lib
 
 main :: IO ()
-main = putStrLn . show =<< solve "data/day1.txt" parseDay1 solveDay1
+main = putStrLn . show =<< solve "data/day1.txt" parseDay1 solveNext1
 
 solve :: (Show b) => String -> (String -> a) -> (a -> b) -> IO b
 solve filepath parser solver = do
@@ -13,7 +13,13 @@ solve filepath parser solver = do
 parseDay1 :: String -> [Int]
 parseDay1 = map read . lines
 
+massToFuel :: Int -> Int
+massToFuel m = (m `div` 3) - 2
+
 solveDay1 :: [Int] -> Int
 solveDay1 = sum . map massToFuel
+
+solveNext1 :: [Int] -> Int
+solveNext1 = sum . map massToFuelToFuel
   where
-    massToFuel m = (m `div` 3) - 2
+    massToFuelToFuel = sum . takeWhile (> 0) . drop 1 . iterate massToFuel
